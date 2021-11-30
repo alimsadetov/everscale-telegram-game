@@ -1,0 +1,1 @@
+# everscale-telegram-game

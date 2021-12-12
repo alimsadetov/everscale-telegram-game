@@ -10,11 +10,11 @@ const { GamecontractContract } = require("./GamecontractContract.js")
 const { GiverContract } = require("./GiverContract.js")
 
 const giver_keys ={
-    "public": "40c86bb01cd22ce5cc7561db755bea59c61164d1b77f2e5aaaf280b9eb89aa72",
-    "secret": "99775e98fc37af1b8c7d8196778365b31808e383f4a5a55943af9cc52a5c8738"
+    "public": "",
+    "secret": ""
 }
 
-const TOKEN = '2130514852:AAGkhVr-2NT2eeyozSnGT1d69bXpXoqQ9Tw';
+const TOKEN = '';
 
 const bot = new TelegramBot(TOKEN, {
     polling: true
@@ -86,7 +86,7 @@ async function main_create(client,msg) {
     });
 
     const giver = new Account(GiverContract,{
-        address: "0:afde690d7e09f49ea2b971a0819c7b74e1c5f22c57f23e69c457f94e1f3d797d",
+        address: "",
         signer: signerKeys(giver_keys),
         client
     });
@@ -355,7 +355,7 @@ async function gaming(msg, gameAcc, giver) {
                                     return true;
                                 }
                                 else {
-                                    await gameAcc.run("sendValue", {dest: "0:afde690d7e09f49ea2b971a0819c7b74e1c5f22c57f23e69c457f94e1f3d797d", value: spisanie});
+                                    await gameAcc.run("sendValue", {dest: "", value: spisanie});
                                     console.log("деньги перечислены с геймконтракта на гивера");
                                     await bot.sendMessage(msg.chat.id, `Подождите, скоро вам будут перечислен выигрыш...`);
                                     await refundTokens(msg,gameAcc,giver);
@@ -367,7 +367,7 @@ async function gaming(msg, gameAcc, giver) {
                         }
 
                         else {
-                            await gameAcc.run("sendTransactionAndDeleteContract", {dest:"0:afde690d7e09f49ea2b971a0819c7b74e1c5f22c57f23e69c457f94e1f3d797d"});
+                            await gameAcc.run("sendTransactionAndDeleteContract", {dest:""});
                             await bot.sendMessage(msg.chat.id, `К сожалению, вы проиграли, попробуйте ещё раз`);
                             console.log('деньги списаны на гивер');
 
